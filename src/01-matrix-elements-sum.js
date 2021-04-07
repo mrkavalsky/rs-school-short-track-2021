@@ -15,7 +15,7 @@
  * The result should be 9
  */
 function getMatrixElementsSum(/* matrix */) {
-  throw new Error('Not implemented');
+
 }
 
 module.exports = getMatrixElementsSum;
