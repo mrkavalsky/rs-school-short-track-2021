@@ -13,15 +13,50 @@
 
 class Queue {
   get size() {
-    throw new Error('Not implemented');
+    let count = 1;
+    let current = this;
+    while (current.next !== null) {
+      current = current.next;
+      count++;
+    }
+    return count;
   }
 
-  enqueue(/* element */) {
-    throw new Error('Not implemented');
+  enqueue(element) {
+    let current = this;
+    const item = {
+      value: element,
+      next: null,
+    };
+    if (this.next === undefined) {
+      this.next = null;
+      this.value = element;
+    } else {
+      while (current.next !== null) {
+        current = current.next;
+      }
+      current.next = item;
+    }
   }
 
   dequeue() {
-    throw new Error('Not implemented');
+    let current = this;
+    const item = this.value;
+    let prev;
+    let next;
+    if (this.next === null) {
+      delete this.value;
+      delete this.next;
+    } else {
+      while (current.next !== null) {
+        next = current.next;
+        current.value = next.value;
+        prev = current;
+        current = current.next;
+      }
+      prev.next = null;
+    }
+    return item;
   }
 }
 
